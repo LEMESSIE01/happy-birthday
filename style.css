@@ -1,0 +1,275 @@
+/* ==========================================
+   STYLE GÉNÉRAL & POLICES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f7f6; /* Fond très légèrement grisé pour faire ressortir les éléments */
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Classe pour masquer les sections au départ */
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================
+   1. ÉCRAN D'ACCUEIL (Thème Bleu Marine)
+   ========================================== */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a192f 0%, #172a45 100%); /* Dégradé Bleu Marine nuit */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.welcome-box {
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.welcome-box h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #f4d068; /* Or lumineux pour le contraste */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-box p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+#start-btn {
+    background-color: #f4d068; /* Bouton Or */
+    color: #0a192f; /* Texte Bleu Marine */
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(244, 208, 104, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(244, 208, 104, 0.5);
+}
+
+/* ==========================================
+   2. SECTION PRINCIPALE & TITRE
+   ========================================== */
+.romantic-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #0a192f; /* Titre Bleu Marine */
+    text-align: center;
+    margin: 50px 0;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* ==========================================
+   3. LE CATALOGUE (GRILLE DE PHOTOS)
+   ========================================== */
+.catalog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.catalog-item {
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(10, 25, 47, 0.08); /* Ombre bleutée très légère */
+    transition: transform 0.3s ease;
+    width: 250px;
+}
+
+.catalog-item:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+.catalog-photo {
+    width: 226px;
+    height: 226px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background-color: #0a192f;
+}
+
+.catalog-photo img, .catalog-photo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recadre proprement sans déformer */
+}
+
+/* Bouton Play sur la vidéo */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.3); /* Voile bleu transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.play-icon {
+    font-size: 2.5rem;
+    color: #f4d068; /* Icône Play en Or */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Petits mots sous les photos */
+.catalog-caption {
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #172a45; /* Texte bleu sombre */
+    text-align: center;
+}
+
+/* ==========================================
+   4. DESIGN DE LA BOÎTE AUX LETTRES
+   ========================================== */
+.mailbox-wrapper {
+    text-align: center;
+    margin: 60px auto 20px auto;
+}
+
+.mailbox-hint {
+    font-family: 'Poppins', sans-serif;
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+#mailbox {
+    font-size: 5rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+#mailbox:hover {
+    transform: scale(1.2);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ==========================================
+   5. LA LETTRE ET L'ENVELOPPE
+   ========================================== */
+#letter-container {
+    margin-top: 30px;
+    padding-bottom: 80px;
+}
+
+.envelope {
+    background-color: #0a192f; /* Enveloppe Bleu Marine */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(10, 25, 47, 0.2);
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    border: 2px dashed #f4d068; /* Bordure pointillée en Or */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.envelope:hover {
+    transform: scale(1.02) rotate(-1deg);
+    box-shadow: 0 15px 35px rgba(10, 25, 47, 0.35);
+}
+
+.letter {
+    background-color: #fffdfb; /* Papier blanc cassé chic */
+    padding: 40px 30px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.02), 0 4px 10px rgba(0,0,0,0.05);
+    min-height: 250px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.letter h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #0a192f; /* Écrit en Bleu Marine */
+    margin-bottom: 20px;
+}
+
+#love-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #334155; /* Couleur de texte douce pour la lecture */
+    min-height: 100px;
+}
+
+/* Curseur clignotant de la machine à écrire */
+#love-text::after {
+    content: '|';
+    color: #f4d068; /* Curseur doré */
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.signature {
+    align-self: flex-end;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #0a192f;
+    margin-top: 30px;
+}
+
+/* ==========================================
+   6. ANIMATION DE LA PLUIE DE CŒURS
+   ========================================== */
+@keyframes tomber {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}

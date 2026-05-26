@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire !</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Effet de transition pour le démarrage du site */
+        #welcome-screen, #main-content {
+            transition: opacity 0.5s ease;
+        }
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- AJUSTEMENTS D'ESPACE POUR LES PHOTOS ET VIDÉOS --- */
+        .catalog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px 40px; 
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .catalog-item {
+            margin-bottom: 30px; 
+            background: rgba(255, 255, 255, 0.8); 
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .catalog-caption {
+            margin-top: 20px; 
+            font-size: 1.1rem;
+        }
+
+        /* Section de transition au milieu des souvenirs */
+        .mid-transition-wrapper {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+        }
+
+        .mailbox-wrapper {
+            margin-top: 100px; 
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Style des boutons musicaux explicites */
+        .music-btn {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .music-btn:hover {
+            background: #b0236a;
+            transform: scale(1.05);
+        }
+
+        .music-btn:disabled {
+            background: #cccccc;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* --- STYLE POUR LA GRANDE LETTRE MAGIQUE --- */
+        #letter-container {
+            width: 100%;
+            max-width: 800px; 
+            margin: 0 auto 100px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .envelope {
+            background: #fdfbf7; 
+            padding: 40px 50px; 
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #eae3d2;
+        }
+
+        .letter {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.8; 
+        }
+
+        .letter h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d63384; 
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #f5c2c7;
+            padding-bottom: 10px;
+        }
+
+        #love-text {
+            font-size: 1.2rem;
+            white-space: pre-wrap; 
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            text-align: right;
+            color: #d63384;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO BALISES FORCÉES EN PRELOAD -->
+    <audio id="music-intro" loop preload="auto">
+        <source src="assets/musique_intro.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="music-lettre" loop preload="auto">
+        <source src="assets/musique_lettre.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="music-final" loop preload="auto">
+        <source src="assets/musique_final.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="welcome-screen">
+        <div class="welcome-box">
+            <h1>Aujourd'hui est un jour spécial...</h1>
+            <p>J'ai préparé une petite surprise pour toi. Es-tu prête ?</p>
+            <button id="start-btn" class="music-btn" onclick="ouvrirCadeau()">Activer la musique & Découvrir la surprise 🎵</button>
+        </div>
+    </section>
+
+    <section id="main-content" class="hidden">
+        <header>
+            <h2 class="romantic-title">Joyeux anniversaire ma Minimoys !</h2>
+        </header>
+
+        <div class="catalog-container">
+            <!-- SOUVENIRS 1 À 12 -->
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo1.jpg" alt="Souvenir 1">
+                </div>
+                <div class="catalog-caption">Tu as toujours été magnifique ✨</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-1" class="hover-video" loop muted playsinline>
+                        <source src="assets/video1.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Belle, forte et remplie d'ambition 🌟</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo2.jpg" alt="Souvenir 2">
+                </div>
+                <div class="catalog-caption">Pleine de vie, de gentillesse et de compassion 🤗</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo3.jpg" alt="Souvenir 3">
+                </div>
+                <div class="catalog-caption">Celle dont je suis tombé amoureux 🌸</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-2" class="hover-video" loop muted playsinline>
+                        <source src="assets/video2.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Un peu chiante par moment mais toujours merveilleuse 🤪</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo4.jpg" alt="Souvenir 4">
+                </div>
+                <div class="catalog-caption">La distance qu'il y a aujourd'hui n'efface pas les souvenirs que j'ai de toi, j'en garde mémoire ❤️</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo5.jpg" alt="Souvenir 5">
+                </div>
+                <div class="catalog-caption">Les disputes et querelles qui rendent notre relation unique je trouve </div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo6.jpg" alt="Souvenir 6">
+                </div>
+                <div class="catalog-caption">Quand j'étais dans le noir et que tu es arrivée, j'ai su que ça serait toi 🎁</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo7.jpg" alt="Souvenir 7">
+                </div>
+                <div class="catalog-caption">Ce n'est pas toujours facile mais ça vaut le coup de continuer ☀️</div>
+            </div>
+
+            <div class="catalog-item">  
+                <div class="catalog-photo">
+                    <video id="birthday-video-3" class="hover-video" loop muted playsinline>
+                        <source src="assets/video3.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Et ce n'est que le début de notre histoire... 🚀</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo8.jpg" alt="Souvenir 8">
+                </div>
+                <div class="catalog-caption">Car l'amour est une simple émotion mais continuer d'aimer est un choix. Un choix que j'ai décidé de faire 💭</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo9.jpg" alt="Souvenir 9">
+                </div>
+                <div class="catalog-caption"> Regarder dans la même direction 🌌</div>
+            </div>
+
+            <!-- BOUTON DE TRANSITION AU MILIEU -->
+            <div class="mid-transition-wrapper">
+                <p>Prête pour la suite des souvenirs ? Changeons un peu d'ambiance...</p>
+                <button id="next-phase-btn" class="music-btn" onclick="lancerMusiqueLettre()">Continuer les souvenirs en musique 🎶</button>
+            </div>
+
+            <!-- SOUVENIRS 13 À 20 -->
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo10.jpg" alt="Souvenir 10">
+                </div>
+                <div class="catalog-caption">J'ai eu un peu d'inspiration mais j'ai plus trop trouvé tes photos bébé, mais pas grave 😍</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo11.jpg" alt="Souvenir 11">
+                </div>
+                <div class="catalog-caption">Les mots c'est mon truc donc sois douce en commentaire 🤝</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo12.jpg" alt="Souvenir 12">
+                </div>
+                <div class="catalog-caption">Des fois aussi tu n'es pas trop juste 🤪</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-4" class="hover-video" loop muted playsinline>
+                        <source src="assets/video4.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Tes éclats de rire qui me font craquer 😂❤️</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-5" class="hover-video" loop muted playsinline>
+                        <source src="assets/video5.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Pour toujours et à jamais si Dieu le veut ♾️</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-6" class="hover-video" loop muted playsinline>
+                        <source src="assets/video6.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption"> Belle que intelligente tout te reussis franchement 💫</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-7" class="hover-video" loop muted playsinline>
+                        <source src="assets/video7.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Une complice unique au monde 🔐</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <video id="birthday-video-8" class="hover-video" loop muted playsinline>
+                        <source src="assets/video8.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="catalog-caption">Bon là j'ai plus trop d'inspi, ça c'est depuis le samedi 16, flemme de fou il est 2h 🌍</div>
+            </div>
+        </div> 
+        
+        <div class="mailbox-wrapper">
+            <p class="mailbox-hint">Tu as fait tout le tour ? Cliquez sur le bouton pour ouvrir ta lettre... 📬</p>
+            <button class="music-btn" onclick="ouvrirLettreMagique()">Ouvrir la lettre & Lancer le final ✨</button>
+            <div id="mailbox" style="margin-top: 15px;">
+                <span class="mailbox-icon" style="font-size: 4rem;">📬</span>
+            </div>
+        </div>
+
+        <div id="letter-container" class="hidden">
+            <div class="envelope">
+                <div class="letter">
+                    <h3>Pour la fille de Monsieur MATOKO</h3>
+                    <p id="love-text"></p>
+                    <p class="signature">[Le Génie que je suis! Messie]</p> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- 1. OUVERTURE DU SITE + FORCE LE CHARGEMENT AUDIO ---
+        function ouvrirCadeau() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const mainContent = document.getElementById('main-content');
+            const musicIntro = document.getElementById('music-intro');
+
+            if (welcomeScreen && mainContent) {
+                if (musicIntro) {
+                    musicIntro.volume = 0.4;
+                    musicIntro.load(); // Réveille le composant audio
+                    musicIntro.play().catch(e => console.log("Lancement audio échoué. Cause principale : fichier manquant ou corrompu à l'emplacement indiqué. Details:", e));
+                }
+
+                welcomeScreen.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeScreen.style.display = 'none';
+                    mainContent.classList.remove('hidden');
+                    mainContent.style.opacity = '0';
+                    setTimeout(() => { mainContent.style.opacity = '1'; }, 50);
+                    setInterval(creerCoeur, 300); 
+                }, 500);
+            }
+        }
+
+        // --- 2. TRANSITION DEUXIÈME MUSIQUE ---
+        function lancerMusiqueLettre() {
+            const musicIntro = document.getElementById('music-intro');
+            const musicLettre = document.getElementById('music-lettre');
+            const btnTransition = document.getElementById('next-phase-btn');
+
+            if (musicIntro) musicIntro.pause();
+            
+            if (musicLettre) {
+                musicLettre.volume = 0.4;
+                musicLettre.load(); // Force l'actualisation du fichier
+                musicLettre.play().catch(e => console.log("Erreur de lecture :", e));
+            }
+
+            if (btnTransition) {
+                btnTransition.innerText = "Ambiance mise à jour ! ✨";
+                btnTransition.disabled = true;
+            }
+        }
+
+        // --- 3. ANIMATION PLUIE DE CŒURS ---
+        function creerCoeur() {
+            const coeur = document.createElement('div');
+            coeur.innerHTML = '❤️';
+            coeur.style.position = 'fixed';
+            coeur.style.top = '-20px';
+            coeur.style.left = Math.random() * 100 + 'vw'; 
+            coeur.style.fontSize = Math.random() * 20 + 12 + 'px';
+            
+            const duree = Math.random() * 3 + 3;
+            coeur.style.animation = `tomber ${duree}s linear forwards`;
+            coeur.style.zIndex = '999';
+            coeur.style.pointerEvents = 'none';
+            coeur.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            document.body.appendChild(coeur);
+            setTimeout(() => { coeur.remove(); }, duree * 1000);
+        }
+
+        // --- 4. MACHINE À ÉCRIRE TEXTE ---
+        const messageDAmour = " Ma chère  MINIMOYSE,\n\n Bon voilà t'as maintenant 18 ans ! Tu es majeur comme tu le voulais aussi et trés franchement je suis tout aussi heureux pour toi je ne te connais pas depuis super longtemps mais je ne regrette pas du tout et rien aussi tu es ma plus belle rencontre celle qui me rappel maman .\n\n Et Je me demande si les gens comme toi existe vraiment parce que le coeur ,l'empathie, la sagesse , le peu de maturité ,la joie de vivre que tu as  fais de toi la personne incroyable et spécial que tu es et qui rend toutes les personne autours de toi aussi heureuse.  Sans compter aussi les fois où tu n'est pas trop juste un peu folle , des fois tristres , et malgrés ça tu trouve toujpur la force de te levé et d'aller de l'avant  \n\nJe te souhaite le plus merveilleux des anniversaires. Que cette nouvelle année t'apporte de la joie, de la réussite dans tes projets,liberté financiere et toutes les joie que le monde peu offrir à la plus belle personne au monde à mes yeux . Que le grand DIEU te garde et veille toujour sur toi qu'il te protège aussi peu importe où tu mettra les pieds!\n\n Et clairement j'espere que ce petit site t'ai plu parce je l'ai fais avec beaucoup d'attention c'est le genre de truc que tu apprecirais mais je me suis dis que ça serais assez original  malgrés le faite que je n'ai pu faire que la premiere partie mais t'inquiete pas  la seconde est en route  du coup c'est sur ces mots que je vais m'arreter là.\n\n  Bon bah voilà  MATOKO BAMANA Jimelda Pauliana Grace alias la fille de Monsieur MATOKO  je te souhaite encore un trés bon anniversaire et Je t'aime ❤️"
+        let indexTexte = 0;
+        let ecritureLancee = false;
+
+        // --- 5. LECTURE FINALE ET AFFICHAGE ENVELOPPE ---
+        function ouvrirLettreMagique() {
+            const letterContainer = document.getElementById('letter-container');
+            const mailbox = document.getElementById('mailbox');
+            const musicLettre = document.getElementById('music-lettre');
+            const musicIntro = document.getElementById('music-intro'); 
+            const musicFinal = document.getElementById('music-final');
+            
+            if (letterContainer && letterContainer.classList.contains('hidden')) {
+                if (musicLettre) musicLettre.pause();
+                if (musicIntro) musicIntro.pause();
+                
+                if (musicFinal) {
+                    musicFinal.volume = 0.4;
+                    musicFinal.load(); // Force la lecture instantanée
+                    musicFinal.play().catch(e => console.log("Erreur lecture finale :", e));
+                }
+
+                letterContainer.classList.remove('hidden');
+                if (mailbox) mailbox.innerHTML = '<span style="font-size: 4rem;">📭</span>'; 
+                
+                demarrerMachineAEcrire();
+                setTimeout(() => { letterContainer.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+            }
+        }
+
+        function demarrerMachineAEcrire() {
+            if (ecritureLancee) return; 
+            ecritureLancee = true;
+            const zoneTexte = document.getElementById('love-text');
+            if (zoneTexte) {
+                zoneTexte.innerHTML = "";
+                ecrireLettre();
+            }
+        }
+
+        function ecrireLettre() {
+            const zoneTexte = document.getElementById('love-text');
+            if (indexTexte < messageDAmour.length) {
+                zoneTexte.innerHTML += messageDAmour.charAt(indexTexte);
+                indexTexte++;
+                setTimeout(ecrireLettre, 35); 
+            }
+        }
+
+        // --- 6. GESTION DES VIDEOS ---
+        window.onload = function() {
+            const toutesLesVideos = document.querySelectorAll('.hover-video');
+            toutesLesVideos.forEach(video => {
+                const videoContainer = video.parentElement;
+                videoContainer.addEventListener('mouseenter', () => { video.play().catch(e => {}); });
+                videoContainer.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+                videoContainer.addEventListener('click', (e) => {
+                    if (video.paused) {
+                        toutesLesVideos.forEach(v => { if(v !== video) v.pause(); });
+                        video.play().catch(e => {});
+                    } else { video.pause(); }
+                });
+            });
+        };
+    </script>
+</body>
+</html>
