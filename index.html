@@ -6,131 +6,9 @@
     <title>Joyeux Anniversaire !</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Effet de transition pour le démarrage du site */
-        #welcome-screen, #main-content {
-            transition: opacity 0.5s ease;
-        }
-        .hidden {
-            display: none !important;
-        }
-
-        /* --- AJUSTEMENTS D'ESPACE POUR LES PHOTOS ET VIDÉOS --- */
-        .catalog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px 40px; 
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .catalog-item {
-            margin-bottom: 30px; 
-            background: rgba(255, 255, 255, 0.8); 
-            padding: 15px;
-            border-radius: 15px;
-        }
-
-        .catalog-caption {
-            margin-top: 20px; 
-            font-size: 1.1rem;
-        }
-
-        /* Section de transition au milieu des souvenirs */
-        .mid-transition-wrapper {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 15px;
-        }
-
-        .mailbox-wrapper {
-            margin-top: 100px; 
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        /* Style des boutons musicaux explicites */
-        .music-btn {
-            background: #d63384;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .music-btn:hover {
-            background: #b0236a;
-            transform: scale(1.05);
-        }
-
-        .music-btn:disabled {
-            background: #cccccc;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-
-        /* --- STYLE POUR LA GRANDE LETTRE MAGIQUE --- */
-        #letter-container {
-            width: 100%;
-            max-width: 800px; 
-            margin: 0 auto 100px auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .envelope {
-            background: #fdfbf7; 
-            padding: 40px 50px; 
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 1px solid #eae3d2;
-        }
-
-        .letter {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.8; 
-        }
-
-        .letter h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #d63384; 
-            margin-bottom: 30px;
-            border-bottom: 2px dashed #f5c2c7;
-            padding-bottom: 10px;
-        }
-
-        #love-text {
-            font-size: 1.2rem;
-            white-space: pre-wrap; 
-            text-align: left;
-            margin-bottom: 40px;
-        }
-
-        .signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            text-align: right;
-            color: #d63384;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- AUDIO BALISES FORCÉES EN PRELOAD -->
     <audio id="music-intro" loop preload="auto">
         <source src="assets/musique_intro.mp3" type="audio/mpeg">
     </audio>
@@ -157,7 +35,6 @@
         </header>
 
         <div class="catalog-container">
-            <!-- SOUVENIRS 1 À 12 -->
             <div class="catalog-item">
                 <div class="catalog-photo">
                     <img src="assets/photo1.jpg" alt="Souvenir 1">
@@ -257,13 +134,11 @@
                 <div class="catalog-caption"> Regarder dans la même direction 🌌</div>
             </div>
 
-            <!-- BOUTON DE TRANSITION AU MILIEU -->
             <div class="mid-transition-wrapper">
                 <p>Prête pour la suite des souvenirs ? Changeons un peu d'ambiance...</p>
                 <button id="next-phase-btn" class="music-btn" onclick="lancerMusiqueLettre()">Continuer les souvenirs en musique 🎶</button>
             </div>
 
-            <!-- SOUVENIRS 13 À 20 -->
             <div class="catalog-item">
                 <div class="catalog-photo">
                     <img src="assets/photo10.jpg" alt="Souvenir 10">
@@ -343,6 +218,13 @@
                     </div>
                 </div>
                 <div class="catalog-caption">Bon là j'ai plus trop d'inspi, ça c'est depuis le samedi 16, flemme de fou il est 2h 🌍</div>
+            </div>
+
+            <div class="catalog-item">
+                <div class="catalog-photo">
+                    <img src="assets/photo13.jpg" alt="Dernier souvenir">
+                </div>
+                <div class="catalog-caption">Et pour finir en beauté, cette magnifique photo de toi... 🥰🌹</div>
             </div>
         </div> 
         
