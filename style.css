@@ -272,4 +272,61 @@ body {
         transform: translateY(105vh) rotate(360deg);
         opacity: 0;
     }
+} /* --- ADAPTATION POUR SMARTPHONES (Écrans de moins de 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. On ajuste la taille globale des textes */
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem !important; /* Titre plus petit pour éviter qu'il coupe */
+        line-height: 1.3;
+    }
+
+    /* 2. On force les éléments à rester dans l'écran */
+    .container, #welcome-screen, #main-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 15px !important;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    /* 3. La grille de photos/vidéos passe sur 1 seule colonne au lieu de 3 ou 4 */
+    .gallery-grid, .grid, .photos-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* 4. On ajuste la taille des images et vidéos pour qu'elles ne débordent pas */
+    .photo-card, .video-container, img, video {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 15px;
+    }
+
+    /* 5. On ajuste la boîte de la lettre d'amour pour qu'elle soit lisible */
+    #letter-container {
+        width: 95% !important;
+        padding: 20px 15px !important;
+        margin: 20px auto !important;
+    }
+
+    #love-text {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        white-space: pre-wrap; /* Respecte bien tes retours à la ligne */
+    }
+
+    /* 6. On agrandit légèrement les boutons pour qu'ils soient faciles à cliquer au doigt */
+    button, .btn {
+        width: 100% !important; /* Le bouton prend toute la largeur sur mobile */
+        padding: 15px !important;
+        font-size: 1.1rem !important;
+    }
 }
