@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #f4f7f6; /* Fond très légèrement grisé pour faire ressortir les éléments */
+    background-color: #f4f7f6; /* Fond très légèrement grisé */
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
@@ -44,7 +44,7 @@ body {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
     margin-bottom: 20px;
-    color: #f4d068; /* Or lumineux pour le contraste */
+    color: #f4d068; /* Or lumineux */
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -214,7 +214,7 @@ body {
 }
 
 .letter {
-    background-color: #fffdfb; /* Papier blanc cassé chic */
+    background-color: #fffdfb; /* Papier blanc cassé */
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: inset 0 0 20px rgba(0,0,0,0.02), 0 4px 10px rgba(0,0,0,0.05);
@@ -228,7 +228,7 @@ body {
 .letter h3 {
     font-family: 'Dancing Script', cursive;
     font-size: 2.2rem;
-    color: #0a192f; /* Écrit en Bleu Marine */
+    color: #0a192f;
     margin-bottom: 20px;
 }
 
@@ -236,14 +236,13 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #334155; /* Couleur de texte douce pour la lecture */
-    min-height: 100px;
+    color: #334155;
 }
 
 /* Curseur clignotant de la machine à écrire */
 #love-text::after {
     content: '|';
-    color: #f4d068; /* Curseur doré */
+    color: #f4d068;
     animation: blink 0.7s infinite;
 }
 
@@ -272,61 +271,112 @@ body {
         transform: translateY(105vh) rotate(360deg);
         opacity: 0;
     }
-} /* --- ADAPTATION POUR SMARTPHONES (Écrans de moins de 768px) --- */
+}
+
+/* ==========================================
+   7. DESIGN ET RENDU SMARTPHONE OPTIMISÉ
+   ========================================== */
 @media (max-width: 768px) {
     
-    /* 1. On ajuste la taille globale des textes */
     body {
         font-size: 14px;
-        padding: 10px;
+        padding: 0 !important;
+        margin: 0;
+        overflow-x: hidden;
     }
 
-    h1 {
-        font-size: 1.8rem !important; /* Titre plus petit pour éviter qu'il coupe */
+    /* Redimensionnement adaptatif des grands titres */
+    .romantic-title {
+        font-size: 2.2rem !important;
+        margin: 30px 0 15px 0 !important;
+        padding: 0 10px;
+    }
+
+    .welcome-box h1 {
+        font-size: 2.2rem !important;
         line-height: 1.3;
     }
 
-    /* 2. On force les éléments à rester dans l'écran */
-    .container, #welcome-screen, #main-content {
+    .welcome-box p {
+        font-size: 1rem !important;
+        padding: 0 15px;
+    }
+
+    /* Transformation de la grille PC en liste verticale aérée */
+    .catalog-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        width: 100% !important;
+        padding: 15px !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Calibrage parfait des cadres polaroid sur mobile */
+    .catalog-item {
+        width: 100% !important;
+        max-width: 320px !important; /* Taille idéale d'affichage écran mobile */
+        padding: 12px !important;
+        margin: 0 auto !important;
+    }
+
+    .catalog-photo {
+        width: 100% !important;
+        height: 280px !important; /* Donne une belle hauteur proportionnelle */
+    }
+
+    .catalog-caption {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        padding: 0 5px !important;
+    }
+
+    /* Adaptation de la boîte aux lettres et de l'enveloppe */
+    .mailbox-wrapper {
+        margin: 40px auto 10px auto !important;
+    }
+
+    #mailbox {
+        font-size: 4rem !important;
+    }
+
+    #letter-container {
+        width: 100% !important;
+        padding: 0 15px 60px 15px !important;
+    }
+
+    .envelope {
         width: 100% !important;
         max-width: 100% !important;
         padding: 15px !important;
-        margin: 0 auto;
-        box-sizing: border-box;
     }
 
-    /* 3. La grille de photos/vidéos passe sur 1 seule colonne au lieu de 3 ou 4 */
-    .gallery-grid, .grid, .photos-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
+    .letter {
+        padding: 25px 20px !important;
     }
 
-    /* 4. On ajuste la taille des images et vidéos pour qu'elles ne débordent pas */
-    .photo-card, .video-container, img, video {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        border-radius: 15px;
-    }
-
-    /* 5. On ajuste la boîte de la lettre d'amour pour qu'elle soit lisible */
-    #letter-container {
-        width: 95% !important;
-        padding: 20px 15px !important;
-        margin: 20px auto !important;
+    .letter h3 {
+        font-size: 1.8rem !important;
+        margin-bottom: 15px !important;
     }
 
     #love-text {
-        font-size: 1rem !important;
-        line-height: 1.6 !important;
-        white-space: pre-wrap; /* Respecte bien tes retours à la ligne */
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        white-space: pre-wrap !important; /* Garde la structure de ton texte propre */
     }
 
-    /* 6. On agrandit légèrement les boutons pour qu'ils soient faciles à cliquer au doigt */
-    button, .btn {
-        width: 100% !important; /* Le bouton prend toute la largeur sur mobile */
-        padding: 15px !important;
-        font-size: 1.1rem !important;
+    .signature {
+        font-size: 1.6rem !important;
+        margin-top: 20px !important;
+    }
+
+    /* Optimisation globale des boutons tactiles */
+    button, #start-btn {
+        width: 85% !important;
+        max-width: 280px !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
     }
 }
